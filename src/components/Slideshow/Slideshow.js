@@ -38,7 +38,7 @@ const Slideshow = ({
         </div>
       ))
     }
-    {showPrev
+    {/* {showPrev
       ? (
         <span
           onClick={onClickPrev}
@@ -53,7 +53,7 @@ const Slideshow = ({
           className="arrow arrow-next"
         />
       ) : null
-    }
+    } */}
   </div>
 );
 

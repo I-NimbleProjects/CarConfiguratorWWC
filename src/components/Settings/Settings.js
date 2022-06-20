@@ -71,9 +71,9 @@ const Settings = ({
                 setting.type !== "text" ? (
                   <div className="settings-group-label">
                     <span>{selectedOptions?.[setting.prop]?.label}</span>
-                    <span className="price">
+                    {/* <span className="price">
                       {formatPrice(selectedOptions?.[setting.prop]?.price)}
-                    </span>
+                    </span> */}
                   </div>
                 ) : null
               }

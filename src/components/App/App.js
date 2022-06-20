@@ -9,6 +9,8 @@ import Settings from '../Settings';
 import Summary from '../Summary';
 import Preview from '../Preview';
 import InteriorPreview from '../InteriorPreview';
+import Navbar from '../Navbar';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 /*
  * TODO: Refactor App as a functional component
@@ -24,7 +26,7 @@ import InteriorPreview from '../InteriorPreview';
 class App extends React.Component {
   state = {
     currentStep: 0,
-    config: initialConfig?.['s'] ?? null
+    config: initialConfig?.['g40'] ?? null
   };
 
   get selectedModel() {
@@ -36,7 +38,7 @@ class App extends React.Component {
   get steps() {
     return [
       {
-        name: "car",
+        name: "Models",
         settings: [
           {
             label: "Select car",
@@ -47,19 +49,25 @@ class App extends React.Component {
               label: model.name
             }))
           },
-          {
-            label: "Select type",
-            type: "text",
-            prop: "car_type",
-            options: this.selectedModel?.types ?? [],
-            disclaimer_1: "All cars have Dual Motor All-Wheel Drive, adaptive air suspension, premium interior and sound.",
-            disclaimer_2: "Tesla All-Wheel Drive has two independent motors that digitally control torque to the front and rear wheels—for far better handling and traction control. Your car can drive on either motor, so you don't need to worry about getting stuck on the road."
-          }
+          // {
+          //   label: "Select type",
+          //   type: "text",
+          //   prop: "car_type",
+          //   options: this.selectedModel?.types ?? [],
+          //   disclaimer_1: "All cars have Dual Motor All-Wheel Drive, adaptive air suspension, premium interior and sound.",
+          //   disclaimer_2: "Tesla All-Wheel Drive has two independent motors that digitally control torque to the front and rear wheels—for far better handling and traction control. Your car can drive on either motor, so you don't need to worry about getting stuck on the road."
+          // }
         ]
       },
       {
-        name: "exterior",
+        name: "Features",
         settings: [
+          {
+            // label: "Views",
+            type: "text",
+            prop: "views",
+            options: this.selectedModel?.views ?? []
+          },
           {
             label: "Select color",
             type: "color",
@@ -71,51 +79,87 @@ class App extends React.Component {
             type: "image",
             prop: "wheels",
             options: this.selectedModel?.wheels ?? []
+          },
+          {
+            label: "Select interior",
+            type: "image",
+            prop: "interior",
+            options: this.selectedModel?.interior ?? []
+          },
+          {
+            label: "Select body",
+            type: "image",
+            prop: "body",
+            options: this.selectedModel?.body ?? []
+          },
+          {
+            label: "Select lighting",
+            type: "image",
+            prop: "lighting",
+            options: this.selectedModel?.lighting ?? []
+          },
+          {
+            label: "Select accesories",
+            type: "image",
+            prop: "accessories",
+            options: this.selectedModel?.accessories ?? []
+          },
+          {
+            label: "Select jack",
+            type: "image",
+            prop: "jack",
+            options: this.selectedModel?.jack ?? []
+          },
+          {
+            label: "Select winch",
+            type: "image",
+            prop: "winch",
+            options: this.selectedModel?.winch ?? []
           }
         ]
       },
-      {
-        name: "interior",
-        settings: [
-          {
-            label: "Select premium interior",
-            type: "text",
-            prop: "interior_color",
-            options: this.selectedModel?.interiorColors ?? []
-          },
-          {
-            label: "Select interior layout",
-            type: "text",
-            prop: "interior_layout",
-            options: this.selectedModel?.interiorLayouts ?? []
-          },
-        ]
-      },
+      // {
+      //   name: "interior",
+      //   settings: [
+      //     {
+      //       label: "Select premium interior",
+      //       type: "text",
+      //       prop: "interior_color",
+      //       options: this.selectedModel?.interiorColors ?? []
+      //     },
+      //     {
+      //       label: "Select interior layout",
+      //       type: "text",
+      //       prop: "interior_layout",
+      //       options: this.selectedModel?.interiorLayouts ?? []
+      //     },
+      //   ]
+      // },
       {
         name: "summary"
       }
     ];
   };
 
-  get totalPrice() {
-    const basePrice = this.selectedModel?.types?.find(
-      type => type.value === this.state.config?.car_type
-    )?.price ?? 0;
-    const colorPrice = this.selectedModel?.colors?.find(
-      color => color.value === this.state.config?.color
-    )?.price ?? 0;
-    const wheelsPrice = this.selectedModel?.wheels?.find(
-      wheels => wheels.value === this.state.config?.wheels
-    )?.price ?? 0;
-    const interiorColorPrice = this.selectedModel?.interiorColors?.find(
-      interiorColor => interiorColor.value === this.state.config?.interior_color
-    )?.price ?? 0;
-    const interiorLayoutPrice = this.selectedModel?.interiorLayouts?.find(
-      interiorLayout => interiorLayout.value === this.state.config?.interior_layout
-    )?.price ?? 0;
+  // get totalPrice() {
+  //   const basePrice = this.selectedModel?.types?.find(
+  //     type => type.value === this.state.config?.car_type
+  //   )?.price ?? 0;
+  //   const colorPrice = this.selectedModel?.colors?.find(
+  //     color => color.value === this.state.config?.color
+  //   )?.price ?? 0;
+  //   const wheelsPrice = this.selectedModel?.wheels?.find(
+  //     wheels => wheels.value === this.state.config?.wheels
+  //   )?.price ?? 0;
+  //   const interiorColorPrice = this.selectedModel?.interiorColors?.find(
+  //     interiorColor => interiorColor.value === this.state.config?.interior_color
+  //   )?.price ?? 0;
+  //   const interiorLayoutPrice = this.selectedModel?.interiorLayouts?.find(
+  //     interiorLayout => interiorLayout.value === this.state.config?.interior_layout
+  //   )?.price ?? 0;
 
-    return basePrice + colorPrice + wheelsPrice + interiorColorPrice + interiorLayoutPrice;
-  };
+  //   return basePrice + colorPrice + wheelsPrice + interiorColorPrice + interiorLayoutPrice;
+  // };
 
   goToStep = (step) => {
     this.setState({ currentStep: step });
@@ -163,6 +207,9 @@ class App extends React.Component {
 
     return (
       <div className="app">
+        <Router>
+        <Navbar></Navbar>
+        </Router>
         <Menu
           items={this.steps.map(step => step.name)}
           selectedItem={this.state.currentStep}
@@ -183,6 +230,7 @@ class App extends React.Component {
                 showAllModels={isFirstStep}
                 showSpecs={!isLastStep}
                 onChangeModel={this.handleChangeModel}
+                // rearView={this.state.config}
               />
             )
           }

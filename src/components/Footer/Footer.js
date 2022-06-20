@@ -32,7 +32,7 @@ const Footer = ({
       </button>
     </div>
     <div>
-      <span>{formatPrice(totalPrice, '-')}</span>
+      {/* <span>{formatPrice(totalPrice, '-')}</span> */}
     </div>
     <div>
       <button

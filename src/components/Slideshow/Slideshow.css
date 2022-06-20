@@ -65,7 +65,7 @@
   filter: var(--theme-drop-shadow);
 }
 .slideshow-slide > img.scale {
-  transform: scale(1.4);
+  /* transform: scale(1.4); */
 }
 
 @media(min-width: 576px) {

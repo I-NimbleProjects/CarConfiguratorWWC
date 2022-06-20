@@ -28,29 +28,33 @@ class Menu extends React.Component {
   };
 
   render() {
-    const ModeIcon = this.state.darkMode ? FaSun : FaMoon;
+    // const ModeIcon = this.state.darkMode ? FaSun : FaMoon;
 
     const brandLogo = this.state.darkMode
-      ? `${process.env.PUBLIC_URL}/logo_white.svg`
-      : `${process.env.PUBLIC_URL}/logo.svg`;
+      ? `${process.env.PUBLIC_URL}/wwclogo.png`
+      : `${process.env.PUBLIC_URL}/wwclogo.png`;
+
+    let arrow = '>>';
 
     return (
       <div className="menu-container">
-        <a href="https://alterclass.io/courses/react" className="logo">
-          <img src={brandLogo} alt="AlterClass" />
-        </a>
+        {/* <a href="" className="logo">
+          <img src={brandLogo} alt="" />
+        </a> */}
         <ul className="menu-nav">
           {this.props.items.map((item, i) => (
             <li
-              key={item}
-              onClick={() => this.props.onSelectItem(i)}
-              className={this.props.selectedItem === i ? 'selected' : null}
+            key={item}
+            onClick={() => this.props.onSelectItem(i)}
+            className={this.props.selectedItem === i ? 'selected' : null}
             >
               <h2>{item}</h2>
             </li>
           ))}
+          {/* <span className='arrow-left'>{arrow}</span>
+          <span className='arrow-right'>{arrow}</span> */}
         </ul>
-        <ModeIcon className="mode-icon" onClick={this.handleOnChangeMode} />
+        {/* <ModeIcon className="mode-icon" onClick={this.handleOnChangeMode} /> */}
       </div>
     );
   }

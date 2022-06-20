@@ -1,11 +1,12 @@
 .footer {
+  display: none;
   position: fixed;
   bottom: 0;
   width: 100%;
   z-index: 99;
   height: var(--footer-height);
   box-sizing: border-box;
-  display: flex;
+  /* display: flex; */
   justify-content: space-between;
   align-items: center;
   font-size: 18px;
@@ -13,7 +14,8 @@
   padding: 0 32px;
   border-top: 1px solid var(--theme-footer-separator);
   color: var(--theme-footer-text);
-  background: var(--theme-footer-background);
+  /* background: var(--theme-footer-background); */
+  background-color: white;
 }
 
 .footer > * {
@@ -71,8 +73,9 @@
   min-height: 24px;
 }
 
-@media(min-width: 576px) {
+@media screen and (max-width: 990px) {
   .footer {
+    display: flex;
     font-size: 24px;
   }
   .footer button {

@@ -4,6 +4,14 @@
   text-align: center;
 }
 
+@media screen and (max-width: 990px) {
+  .settings {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+}
+
 .settings-group {
   max-width: 450px;
   margin: 0 auto;
@@ -11,8 +19,8 @@
 }
 .settings-group > h3 {
   text-transform: capitalize;
-  font-weight: 400;
-  font-size: 24px;
+  font-weight: 500;
+  font-size: 20px;
   margin-top: 0;
   margin-bottom: 16px;
 }
