@@ -48,6 +48,12 @@ class Preview extends React.Component {
 
   // frontView = () => {
   //   this.props.onChangeModel(this.props.config.views = "front");
+  //   console.log(this.props.config.views);
+  // }
+
+  // rearView = () => {
+  //   this.props.onChangeModel(this.props.config.views = "rear");
+  //   console.log(this.props.config.views);
   // }
 
   // get specs() {
@@ -81,7 +87,7 @@ class Preview extends React.Component {
         />
         {/* <div className='button-container'>
         <button className='button' onClick={() => this.frontView}>Front view</button>
-        <button className='button' onClick={() => this.props.itemsRearView}>Rear view</button>
+        <button className='button' onClick={() => this.rearView}>Rear view</button>
         </div> */}
         {/* {
           this.props.showSpecs ? (

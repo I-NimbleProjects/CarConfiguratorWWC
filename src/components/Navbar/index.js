@@ -38,9 +38,9 @@ const Navbar = () => {
           <NavLink as="a" href="https://worldwidecruisers.com/content/6-recent-builds" activeStyle>
             Recent builds
           </NavLink>
-          {/* <NavLink as="a" href="http://worldwidecruisers.com/4-merchandise" activeStyle>
+          <NavLink as="a" href="http://worldwidecruisers.com/4-merchandise" activeStyle>
             Merchandise
-          </NavLink> */}
+          </NavLink>
           <NavLink as="a" href="https://worldwidecruisers.com/content/8-contact-us" activeStyle>
             Contact us
           </NavLink>

@@ -11,7 +11,7 @@ function Form() {
 	const handleSend = async (e) => {
 		setSent(true)
 		try {
-			await axios.post("http://localhost:4000/", {
+			await axios.post("https://localhost:4000/", {
 				text, name, email
 			})
 		} catch (error) {
